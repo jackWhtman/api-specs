@@ -9,6 +9,7 @@ http:
   headers:
     - name: Content-Type
       value: application/json
+      disabled: true
     - name: Authorization
       value: "{{Auth}}"
   body:
