@@ -1,4 +1,4 @@
 name: dev
 variables:
-  - name: test
-    value: secret
+  - secret: true
+    name: test
