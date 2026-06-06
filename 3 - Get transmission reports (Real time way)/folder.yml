@@ -1,0 +1,7 @@
+info:
+  name: "3 - Get transmission reports (Real time way) "
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit

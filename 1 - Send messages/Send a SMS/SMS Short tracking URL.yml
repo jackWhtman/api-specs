@@ -1,0 +1,68 @@
+info:
+  name: SMS Short tracking URL
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: https://api.odyssey-services.fr/api/V1/SMSJobs
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: "{{Auth}}"
+    - name: ""
+      value: ""
+  body:
+    type: json
+    data: "{\r
+
+      \ \"JobType\": \"SMS\",\r
+
+      \  \"TrackingId\": \"Send SMS with tracking URL\",\r
+
+      \  \"Text\": \"Hello World ! Please click on the following link : http://www.odyssey-messaging.com/\",\r
+
+      \  \"Parameter\": {\r
+
+      \    \"Media\": 1,\r
+
+      \  \"ShortUrl\":true,\r
+
+      \  \"ShortUrlTracking\":true\r
+
+      \  },\r
+
+      \  \"AdhocRecipients\": [\r
+
+      \    {\r
+
+      \      \"Name\": \"Dupont\",\r
+
+      \      \"Address\": \"00337xxxxxx\",\r
+
+      \      \"OptionalFields\": [\r
+
+      \        \"Company A\"\r
+
+      \      ]\r
+
+      \    }\r
+
+      \  ]\r
+
+      }"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: "var jsonData = res.getBody();\r
+
+        pm.setGlobalVariable(\"jobNumber\", jsonData.JobNumber);"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

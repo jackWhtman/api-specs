@@ -1,0 +1,41 @@
+info:
+  name: "Get a job detail filter: filterFailed, outcome and sort"
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: http://api.odyssey-services.fr/api/V1/JobItems?filterJob={{jobNumber}}&filterFailed=false&filterOutcome='F'&sortField=7&sortDirection=1
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: "{{Auth}}"
+  params:
+    - name: filterJob
+      value: "{{jobNumber}}"
+      type: query
+    - name: filterFailed
+      value: "false"
+      type: query
+    - name: filterOutcome
+      value: "'F'"
+      type: query
+    - name: sortField
+      value: "7"
+      type: query
+    - name: sortDirection
+      value: "1"
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Get a job detail filter: filterFailed = false, outcome : 'F', sorted by attemps(7), asc"

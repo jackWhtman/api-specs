@@ -1,0 +1,23 @@
+info:
+  name: Get Job report
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: http://api.odyssey-services.fr/api/V1/HostedReportFiles/{{jobNumber}}
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: "{{Auth}}"
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

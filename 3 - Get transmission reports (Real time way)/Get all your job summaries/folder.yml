@@ -1,0 +1,7 @@
+info:
+  name: Get all your job summaries
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

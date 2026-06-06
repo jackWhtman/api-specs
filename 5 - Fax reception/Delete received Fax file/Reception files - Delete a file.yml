@@ -1,0 +1,23 @@
+info:
+  name: "Reception files : Delete a file"
+  type: http
+  seq: 1
+
+http:
+  method: DELETE
+  url: http://api.odyssey-services.fr/api/V1/InboundFolders/134296015/HostedInboundFiles/0-20170724-0749-1135087.PDF
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: "{{Auth}}"
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

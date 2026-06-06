@@ -1,0 +1,11 @@
+info:
+  name: Send a SMS
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs:
+  content: Various samples to send a SMS
+  type: text/markdown

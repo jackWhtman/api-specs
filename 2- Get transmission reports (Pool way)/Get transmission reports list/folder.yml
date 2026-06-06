@@ -1,0 +1,7 @@
+info:
+  name: Get transmission reports list
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

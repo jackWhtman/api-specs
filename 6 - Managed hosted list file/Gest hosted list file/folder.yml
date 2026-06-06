@@ -1,0 +1,7 @@
+info:
+  name: Gest hosted list file
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit

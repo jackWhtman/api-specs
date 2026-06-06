@@ -1,0 +1,7 @@
+info:
+  name: Gest hosted document file
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit

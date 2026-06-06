@@ -1,0 +1,33 @@
+info:
+  name: "Get a job detail without filter: date"
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: http://api.odyssey-services.fr/api/V1/JobItems?filterJob={{jobNumber}}&filterStartDate=2017-07-01T12:54:40.460Z&filterEndDate=2017-07-08T12:54:40.460Z
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: "{{Auth}}"
+  params:
+    - name: filterJob
+      value: "{{jobNumber}}"
+      type: query
+    - name: filterStartDate
+      value: 2017-07-01T12:54:40.460Z
+      type: query
+    - name: filterEndDate
+      value: 2017-07-08T12:54:40.460Z
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

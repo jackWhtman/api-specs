@@ -1,0 +1,7 @@
+info:
+  name: Delete transmission report file
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit

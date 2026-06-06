@@ -1,0 +1,11 @@
+info:
+  name: Send a Fax
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit
+
+docs:
+  content: Samples to send a fax
+  type: text/markdown

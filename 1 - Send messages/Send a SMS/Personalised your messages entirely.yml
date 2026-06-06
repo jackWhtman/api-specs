@@ -1,0 +1,74 @@
+info:
+  name: Personalised your messages entirely
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: https://api.odyssey-services.fr/api/V1/SMSJobs
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: "{{Auth}}"
+    - name: ""
+      value: ""
+  body:
+    type: json
+    data: "{\r
+
+      \  \"JobType\": \"SMS\",\r
+
+      \  \"TrackingId\": \"Send SMS with Full message personalization\",\r
+
+      \  \"LaunchType\": 0,\r
+
+      \  \"Text\": \"`BCF3\",\r
+
+      \  \"AdhocRecipients\": [\r
+
+      \    {\r
+
+      \      \"Name\": \"Dupont\",\r
+
+      \      \"Address\": \"00337xxxxxx\",\r
+
+      \      \"OptionalFields\": [\r
+
+      \        \"This the text for the first recipient Dupont\"\r
+
+      \      ]\r
+
+      \    },\r
+
+      \  {\r
+
+      \      \"Name\": \"James\",\r
+
+      \      \"Address\": \"00336xxxxxx\",\r
+
+      \      \"OptionalFields\": [\r
+
+      \        \"This the text for the second recipient James\"\r
+
+      \      ]\r
+
+      \    }\r
+
+      \  ]\r
+
+      }"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: "var jsonData = res.getBody();\r
+
+        pm.setGlobalVariable(\"jobNumber\", jsonData.JobNumber);"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

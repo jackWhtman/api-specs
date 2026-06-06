@@ -1,0 +1,100 @@
+info:
+  name: Use advanced parameters
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: https://api.odyssey-services.fr/api/V1/EmailJobs
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: "{{Auth}}"
+    - name: ""
+      value: ""
+  body:
+    type: json
+    data: "{\r
+
+      \  \"JobType\": \"Email\",\r
+
+      \  \"TrackingId\": \"Send Email with advanced parameters\",\r
+
+      \  \"EmailBody\": {\r
+
+      \    \"Name\": \"body.html\",\r
+
+      \    \"Content\": \"PGh0bWw+DQo8aGVhZGVyPg0KPG1ldGEgY2hhcnNldD0iVVRGLTgiPg0KPC9oZWFkZXI+DQo8Ym9keT4NClRoaXMgaXMgYW4gZW1haWwgdGVzdCBmcm9tIE9keXNzZXkgTWVzc2FnaW5nLg0KPGJyLz4NCjxhIGhyZWY9Imh0dHA6Ly93d3cub2R5c3NleS1tZXNzYWdpbmcuY29tIj5UaGlzIGlzIGEgbGluayB0byB0ZXN0IHRoZSB0cmFja2luZyBvcHRpb248L2E+DQo8L2JvZHk+DQo8L2h0bWw+\",\r
+
+      \    \"Type\":2\r
+
+      \  },\r
+
+      \  \"AdhocRecipients\": [\r
+
+      \    {\r
+
+      \      \"Address\":\"usern@gmail.com\",\r
+
+      \      \"Name\":\"John\",\r
+
+      \      \"OptionalFields\": [\r
+
+      \        \"My Company\",\r
+
+      \        \"BirthDate\"\r
+
+      \      ]\r
+
+      \    }\r
+
+      \  ],\r
+
+      \  \"Attachments\": [\r
+
+      \    {\r
+
+      \      \"Name\": \"Attachment1.txt\",\r
+
+      \      \"Content\": \"VGhpcyBpcyBhbiBhdHRhY2hlbWVudCBmaWxl\",\r
+
+      \      \"Type\":4\r
+
+      \    }\r
+
+      \  ],\r
+
+      \  \"Parameter\": {\r
+
+      \    \"Media\" : 5,\r
+
+      \    \"Subject\": \"My Email subject\",\r
+
+      \    \"ReplyTo\":\"support@myCompany.com\",\r
+
+      \    \"From\":\"\\\"Mycompany\\\" <MyCompany@ods2.net>\",\r
+
+      \    \"ActivateAutoPull\": true,\r
+
+      \    \"ActivateTracking\": true,\r
+
+      \    \"TrackingType\": 0\r
+
+      \  }\r
+
+      }"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: "var jsonData = res.getBody();\r
+
+        pm.setGlobalVariable(\"jobNumber\", jsonData.JobNumber);"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

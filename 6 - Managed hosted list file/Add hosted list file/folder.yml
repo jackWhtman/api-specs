@@ -1,0 +1,7 @@
+info:
+  name: Add hosted list file
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit

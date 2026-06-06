@@ -1,0 +1,72 @@
+info:
+  name: Use a file list
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: https://api.odyssey-services.fr/api/V1/EmailJobs
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: "{{Auth}}"
+    - name: ""
+      value: ""
+  body:
+    type: json
+    data: "{\r
+
+      \  \"JobType\": \"Email\",\r
+
+      \  \"TrackingId\": \"Send Email with file list\",\r
+
+      \  \"EmailBody\": {\r
+
+      \    \"Name\": \"body.html\",\r
+
+      \    \"Content\": \"PGh0bWw+DQo8aGVhZGVyPg0KPG1ldGEgY2hhcnNldD0iVVRGLTgiPg0KPC9oZWFkZXI+DQo8Ym9keT4NClRoaXMgaXMgYW4gZW1haWwgdGVzdCBmcm9tIE9keXNzZXkgTWVzc2FnaW5nLg0KPC9ib2R5Pg0KPC9odG1sPg==\",\r
+
+      \    \"Type\":2\r
+
+      \  },\r
+
+      \  \"Lists\": [\r
+
+      \    {\r
+
+      \      \"Name\": \"test.tab\",\r
+
+      \      \"Type\":0,\r
+
+      \      \"Content\": \"dXNlcm5AZ21haWwuY29tCUpvaG4JTXkgQ29tcGFueQlCaXJ0aERhdGU=\"\r
+
+      \    }\r
+
+      \  ],\r
+
+      \  \"Parameter\": {\r
+
+      \    \"Media\" : 5,\r
+
+      \    \"Subject\": \"My Email subject\",\r
+
+      \    \"ReplyTo\":\"support@myCompany.com\"\r
+
+      \  }\r
+
+      }"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: "var jsonData = res.getBody();\r
+
+        pm.setGlobalVariable(\"jobNumber\", jsonData.JobNumber);"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

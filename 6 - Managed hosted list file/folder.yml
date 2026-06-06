@@ -1,0 +1,7 @@
+info:
+  name: 6 - Managed hosted list file
+  type: folder
+  seq: 6
+
+request:
+  auth: inherit

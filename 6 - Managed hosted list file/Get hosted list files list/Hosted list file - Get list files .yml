@@ -1,0 +1,29 @@
+info:
+  name: "Hosted list file : Get list files "
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: http://api.odyssey-services.fr/api/V1/HostedListFiles
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: "{{Auth}}"
+  body:
+    type: json
+    data: "{\r
+
+      \  \"Name\": \"TestList.tab\",\r
+
+      \  \"Content\": \"dXNlcm5AZ21haWwuY29tCUpvaG4JTXkgQ29tcGFueQlCaXJ0aERhdGU=\"  \r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

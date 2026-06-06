@@ -1,0 +1,33 @@
+info:
+  name: "Get a job detail filter: pageSize and pageIndex"
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: http://api.odyssey-services.fr/api/V1/JobItems?filterJob={{jobNumber}}&pageIndex=1&pageSize=50
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: "{{Auth}}"
+  params:
+    - name: filterJob
+      value: "{{jobNumber}}"
+      type: query
+    - name: pageIndex
+      value: "1"
+      type: query
+    - name: pageSize
+      value: "50"
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

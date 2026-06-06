@@ -1,0 +1,56 @@
+info:
+  name: Use a file list
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: https://api.odyssey-services.fr/api/V1/SMSJobs
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: "{{Auth}}"
+    - name: ""
+      value: ""
+  body:
+    type: json
+    data: "{\r
+
+      \  \"JobType\": \"SMS\",\r
+
+      \  \"TrackingId\": \"Send SMS with file list\",\r
+
+      \  \"Text\": \"Hello World !\",\r
+
+      \  \"Lists\": [\r
+
+      \    {\r
+
+      \      \"Name\": \"test.tab\",\r
+
+      \      \"Hosted\": false,\r
+
+      \      \"Type\":0,\r
+
+      \      \"Content\": \"77u/MDAzMzc4Tg3OA==\"\r
+
+      \    }\r
+
+      \  ]\r
+
+      }"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: "var jsonData = res.getBody();\r
+
+        pm.setGlobalVariable(\"jobNumber\", jsonData.JobNumber);"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

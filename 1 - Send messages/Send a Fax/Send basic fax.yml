@@ -1,0 +1,70 @@
+info:
+  name: Send basic fax
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: https://api.odyssey-services.fr/api/V1/FaxJobs
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: "{{Auth}}"
+    - name: ""
+      value: ""
+  body:
+    type: json
+    data: "{\r
+
+      \  \"JobType\": \"NO_JTYPE\",\r
+
+      \  \"CustomerNumber\": {{customerNumber}},\r
+
+      \  \"TrackingId\": \"test fax Odyssey REST API from adHoc\",\r
+
+      \  \"LaunchType\": 0,\r
+
+      \  \"Documents\": [\r
+
+      \    {\r
+
+      \      \"Name\": \"test.txt\",\r
+
+      \      \"Hosted\": false,\r
+
+      \      \"Type\":1,\r
+
+      \      \"Content\": \"Qm9uam91ciwgaWNpIEF1ZHJleSBQb3J0cm9uLCBjZWNpIGVzdCB1biB0ZXN0LiA=\"\r
+
+      \    }\r
+
+      \  ],\r
+
+      \  \"AdhocRecipients\": [\r
+
+      \    {\r
+
+      \      \"Name\": \"audrey\",\r
+
+      \      \"Address\": \"134296015\"\r
+
+      \    }\r
+
+      \  ]\r
+
+      }"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: "var jsonData = res.getBody();\r
+
+        pm.setGlobalVariable(\"jobNumber\", jsonData.JobNumber);"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

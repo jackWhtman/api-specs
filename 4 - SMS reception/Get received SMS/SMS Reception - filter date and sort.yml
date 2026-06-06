@@ -1,0 +1,36 @@
+info:
+  name: "SMS Reception : filter date and sort"
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: http://api.odyssey-services.fr/api/V1/InboundSms?FilterStartDate=2017-07-08T12:54:40.460Z&FilterEndDate=2017-07-24T12:54:40.460Z&sortField=0&sortDirection=2
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: "{{Auth}}"
+  params:
+    - name: FilterStartDate
+      value: 2017-07-08T12:54:40.460Z
+      type: query
+    - name: FilterEndDate
+      value: 2017-07-24T12:54:40.460Z
+      type: query
+    - name: sortField
+      value: "0"
+      type: query
+    - name: sortDirection
+      value: "2"
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
