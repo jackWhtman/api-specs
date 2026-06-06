@@ -1,4 +1,4 @@
 name: dev
 variables:
-  - name: tset
+  - name: test
     value: secret
